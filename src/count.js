@@ -54,10 +54,7 @@ class Count extends Component {
            
         }
 
-        shouldComponentUpdate(){
-            return true
-        }
-
+        
        
         timer= () =>{
             this.setState({
