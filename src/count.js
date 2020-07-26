@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Level from './Level'
 
 class Count extends Component {
     
@@ -10,7 +11,7 @@ class Count extends Component {
             score: 9,
             counter: 0,
             level: 1,
-            s: ""
+            sletter: null
         }
 
         onChangeEvent = (event) => {
@@ -19,14 +20,18 @@ class Count extends Component {
         })
         }
 
-         onClickEvent = () => {
-           //setInterval(() => this.timer(), 1000) 
-           this.addSletter() 
-        }  
+     /*    sLetter= ()=> {
+            if (this.state.counter >=2) {
+                this.setState({
+                    sletter: "s"
+                })
+            } 
+        } */
+
+      
 
         onKeyEvent = (event) => {
-            event.preventDefault()
-            if (event.key === "Enter" || event.click ==="click") {
+            if (event.key === "Enter") {
                 const answer = parseInt(this.state.response)
                 if (answer === this.state.num1 * this.state.num2 ){
                     this.setState({
@@ -62,15 +67,8 @@ class Count extends Component {
             })
         }
 
-        
-
-     
-
        
- 
-
-       
-       
+    
         
 
     render() {
@@ -82,41 +80,26 @@ class Count extends Component {
             })
         }
 
-         if (this.state.score >= 10) {
+        if (this.state.score >= 10){
             this.setState({
-                level: this.state.level +1
+                level: this.state.level +1,
+                score: 0,
+                counter: 0
             })
-            return(
-                <div className= "level">
-                    Next level!
-                </div>
-            )
-
         }
 
-        if (this.state.counter >=2) {
-            this.setState({
-                s: "s"
-            })
-        }  
-        return (
         
+        return (        
             <React.Fragment>
-            <h3>Level {this.state.level}</h3>
-            <p>{this.state.counter}second{this.state.s}</p>
+            <Level counter={this.state.counter} score={this.state.score} level={this.state.level}/>
+            <p>{this.state.counter}second   {/* {this.sLetter()} */} </p>
             <h1>{this.state.num1} x {this.state.num2}</h1>
-            <form onSubmit={this.onKeyEvent}>
             <input onKeyUp={this.onKeyEvent} onChange={this.onChangeEvent} value={this.state.response}></input>
-            <button type="submit">SUBMIT</button>
-            </form>
-            
-            <h2 >Your Score: {this.state.score} </h2>
+            <h2 >Score: {this.state.score} </h2>
             </React.Fragment>   
         )
     }
 }
 
     
-
-
 export default Count
