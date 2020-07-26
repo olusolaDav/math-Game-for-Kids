@@ -8,7 +8,7 @@ class Count extends Component {
             num1: 3,
             num2: 4,
             response: "",
-            score: 9,
+            score: 0,
             counter: 0,
             level: 1,
             sletter: null
