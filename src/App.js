@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import Count from './count'
+import Count from './Components/count'
 
 class App extends Component {
 
